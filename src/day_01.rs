@@ -13,17 +13,15 @@ fn puzzle_a(input: &str) -> String {
     let mut total_fuel_needed = 0;
 
     for line in input_text.lines() {
-        let mass = match line.parse::<f32>() {
-            Err(why) => panic!("couldn't parse line {}: {}", line, why),
-            Ok(mass) => mass,
-        };
+        let mass: f32 = line
+            .parse()
+            .expect(&format!("couldn't parse line {}", line));
 
         let module_fuel = ((mass / 3.0).floor() - 2.0) as i32;
         total_fuel_needed += module_fuel;
     }
 
-    let result = format!("{}", total_fuel_needed);
-    result
+    total_fuel_needed.to_string()
 }
 
 fn puzzle_b(input: &str) -> String {
