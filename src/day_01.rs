@@ -29,14 +29,12 @@ fn puzzle_b(input: &str) -> String {
     let mut total_fuel_needed = 0;
 
     for line in input_text.lines() {
-
-        let mut fuel = match line.parse::<i32>(){
+        let mut fuel = match line.parse::<i32>() {
             Err(why) => panic!("couldn't parse line {}: {}", line, why),
-            Ok(mass) => mass
+            Ok(mass) => mass,
         };
 
-        while fuel > 0
-        {
+        while fuel > 0 {
             fuel = ((fuel as f32 / 3.0).floor() - 2.0) as i32;
 
             if fuel > 0 {
@@ -44,7 +42,7 @@ fn puzzle_b(input: &str) -> String {
             }
         }
     }
-    
+
     let result = format!("{}", total_fuel_needed);
     result
 }

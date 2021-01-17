@@ -16,7 +16,7 @@ fn puzzle_a(input: &str) -> String {
     for str_val in str_vals {
         let int_val = match str_val.parse::<i32>() {
             Err(why) => panic!("ERROR: couldn't parse value {}: {}", str_val, why),
-            Ok(int_val) => int_val
+            Ok(int_val) => int_val,
         };
 
         positions.push(int_val);
@@ -31,7 +31,7 @@ fn puzzle_a(input: &str) -> String {
 
     loop {
         let opcode = positions[counter];
-        
+
         match opcode {
             1 => {
                 let index1 = positions[counter + 1] as usize;
@@ -44,7 +44,7 @@ fn puzzle_a(input: &str) -> String {
                 let val3 = val1 + val2;
 
                 positions[index3] = val3;
-            },
+            }
             2 => {
                 let index1 = positions[counter + 1] as usize;
                 let val1 = positions[index1];
@@ -56,9 +56,9 @@ fn puzzle_a(input: &str) -> String {
                 let val3 = val1 * val2;
 
                 positions[index3] = val3;
-            },
+            }
             99 => break,
-            _ => panic!("ERROR: opcode unknown {}", opcode)
+            _ => panic!("ERROR: opcode unknown {}", opcode),
         };
 
         counter += NEXT_SUB_PROGRAM;
@@ -84,7 +84,7 @@ fn puzzle_b(input: &str) -> String {
         for str_val in str_vals {
             let int_val = match str_val.parse::<i32>() {
                 Err(why) => panic!("ERROR: couldn't parse value {}: {}", str_val, why),
-                Ok(int_val) => int_val
+                Ok(int_val) => int_val,
             };
 
             positions.push(int_val);
@@ -112,7 +112,7 @@ fn puzzle_b(input: &str) -> String {
                     let val3 = val1 + val2;
 
                     positions[index3] = val3;
-                },
+                }
                 2 => {
                     let index1 = positions[counter + 1] as usize;
                     let val1 = positions[index1];
@@ -124,9 +124,9 @@ fn puzzle_b(input: &str) -> String {
                     let val3 = val1 * val2;
 
                     positions[index3] = val3;
-                },
+                }
                 99 => break,
-                _ => panic!("ERROR: opcode unknown {}", opcode)
+                _ => panic!("ERROR: opcode unknown {}", opcode),
             };
 
             counter += NEXT_SUB_PROGRAM;
